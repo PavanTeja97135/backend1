@@ -18,6 +18,6 @@ adminrouter.get("/viewcourses",admincontroller.viewcourses)
 adminrouter.delete("/deletecourse/:coursecode",admincontroller.viewcourses)
 adminrouter.put("/changeadminpwd",admincontroller.changeadminpwd)
 adminrouter.post("/allocatecourse",admincontroller.allocateFacultyToCourse)
-adminrouter.get("/viewcoursefacultyallocation",admincontroller.allocateFacultyToCourse)
+adminrouter.get("/viewcoursefacultyallocation",admincontroller.viewcoursefacultyallocation)
 
 module.exports = adminrouter

@@ -168,47 +168,15 @@ const changeFacultypwd = async (request, response) => {
   }
 };
 
-const viewUpdateGrades = async (request, response) => {
-  try {
-    const grades = await Grade.find();
-    response.json(grades);
-  } catch (error) {
-    response.status(500).json({ error: 'Error fetching grades' });
-  }
-};
-
-const updateGrade = async (request, response) => {
-  const { gradeId } = request.params;
-  const { newGrade } = request.body;
-
-  try {
-    const grade = await Grade.findByIdAndUpdate(gradeId, { grade: newGrade }, { new: true });
-    if (!grade) {
-      return response.status(404).json({ error: 'Grade not found' });
-    }
-    response.json(grade);
-  } catch (error) {
-    response.status(500).json({ error: 'Error updating grade' });
-  }
-};
-
-
-
-const postAttendance = async (req, res) => {
-  try {
-    const { studentId, courseId, status } = req.body;
-    
-    const attendance = new Attendance({ studentId, courseId, status });
-    await attendance.save();
-
-    res.status(201).json({ message: 'Attendance posted successfully', attendance });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while posting attendance' });
-  }
-};
 
 
 
 
-module.exports = { checkfacultylogin, changeFacultypwd, viewUpdateGrades, updateGrade,facultyprofile,updatefacultyprofile, postassignment, viewassignment, assignmentfile, postAttendance   };
+
+
+
+
+
+
+
+module.exports = { checkfacultylogin, changeFacultypwd,facultyprofile,updatefacultyprofile, postassignment, viewassignment, assignmentfile,    };

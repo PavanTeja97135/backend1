@@ -7,7 +7,7 @@ const courseschema = new mongoose.Schema({
     unique: true
     },
     coursecode: {
-      type: Number,
+      type: String,
       required: true,
     },
       department: {

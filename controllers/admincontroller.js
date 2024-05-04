@@ -234,10 +234,8 @@ const viewstudents = async (request, response) =>
   
   const allocateFacultyToCourse = async (req, res) => {
     try {
-      const { courseId, facultyId, sectionId } = req.body;
-      const allocation = new FacultyCourseMap({ course:courseId, faculty: facultyId, section: sectionId });
-  
-      // Save the allocation to the database
+      const { courseId, facultyId} = req.body;
+      const allocation = new FacultyCourseMap({ course:courseId, faculty: facultyId});
       await allocation.save();
   
       res.send("Faculty allocated to course successfully");
@@ -248,9 +246,7 @@ const viewstudents = async (request, response) =>
 
   const viewcoursefacultyallocation = async (req, res) => {
     try {
-      const courseFacultyAllocations = await CourseFacultyAllocation.find()
-       
-      
+      const courseFacultyAllocations = await FacultyCourseMap.find()
       if (courseFacultyAllocations.length === 0) {
         res.send("No course faculty allocations found");
       } else {
@@ -260,5 +256,4 @@ const viewstudents = async (request, response) =>
       res.status(500).send(error.message);
     }
   };
-
  module.exports = {checkadminlogin,addstudent,deletestudent,viewstudents,addfaculty,viewfaculty,deletefaculty,addcourse,viewcourses,deletecourse,changeadminpwd,allocateFacultyToCourse,viewcoursefacultyallocation }

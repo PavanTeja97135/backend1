@@ -101,33 +101,8 @@ const checkstudentlogin = async (request, response) =>
   };
    
 
-   const viewattendance = async (request, response) => {
-    try {
-      const attendances = await Attendance.find(); 
-      if (attendances.length === 0) {
-        response.send("DATA NOT FOUND");
-      } else {
-        response.json(attendances);
-      }
-    }
-     catch (error) {
-      response.status(500).send(error.message);
-    }
-  };
 
-  const viewresults = async (request, response) => {
-    try {
-      const results = await Results.find(); // Assuming Result is the model representing results
-      if (results.length === 0) {
-        response.send("DATA NOT FOUND");
-      } else {
-        response.json(results);
-      }
-    } 
-    catch (error) {
-      response.status(500).send(error.message);
-    }
-  };
+
 
   const registercourse = async (request, response) => {
     try {
@@ -146,4 +121,4 @@ const checkstudentlogin = async (request, response) =>
  
 
 
- module.exports = {checkstudentlogin,viewcourses,viewassignments,changestudentpwd,studentprofile,viewattendance,viewresults,registercourse}
+ module.exports = {checkstudentlogin,viewcourses,viewassignments,changestudentpwd,studentprofile,registercourse}
